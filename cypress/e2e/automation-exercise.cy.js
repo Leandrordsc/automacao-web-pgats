@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import faker from 'faker';
 
 describe('Automation Exercise', () => {
     let email;
@@ -64,11 +65,11 @@ describe('Automation Exercise', () => {
       cy.get('[data-qa="login-password"]').type('1472589', { log: false })
       cy.contains('button', 'Login').click()
       cy.get('i.fa-user').parent().should('contain', 'Leandro Teste')
-      cy.contains(' Logout').click()
+      cy.contains('Logout').click()
       cy.url('/login')
       
     })
-    it.only('Caso de teste 5: Registrar usuário com e-mail existente', () => {
+    it('Caso de teste 5: Registrar usuário com e-mail existente', () => {
       cy.visit('/')
       cy.contains('Signup').click()
       cy.get('[data-qa="signup-name"]').type('Sandor Clegane')
@@ -77,7 +78,20 @@ describe('Automation Exercise', () => {
       cy.contains('Email Address already exist!').should('be.visible')
       
     })
-    it('Caso de teste 6: Formulário de contato', () => {
+    it.only('Caso de teste 6: Formulário de contato', () => {
+      const Assunto = faker.lorem.words(2)
+      const Mensagem = faker.lorem.paragraph()
+      cy.visit('')
+      cy.url().should('eq', 'https://automationexercise.com/')
+      cy.contains('Contact us').click()
+      cy.get('[data-qa="name"]').type('Leandro')
+      cy.get('[data-qa="name"]').type('testeUser@email.com')
+      cy.get('[data-qa="subject"]').type(Assunto)
+      cy.get('[data-qa="message"]').type(Mensagem)
+      cy.contains('button','upload_file').click()
+
+
+
       
     });
   })
