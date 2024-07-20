@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
-module.exports = {
+module.exports = defineConfig({
+  watchForFilesChanges: false,
   e2e: {
     setupNodeEvents(on, config) {
       // implementar event listeners aqui
@@ -9,5 +10,5 @@ module.exports = {
     viewportHeight: 1080,
     baseUrl: 'https://automationexercise.com' 
   }
-};
+});
 
