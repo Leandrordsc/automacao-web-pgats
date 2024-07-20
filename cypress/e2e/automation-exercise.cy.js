@@ -107,6 +107,36 @@ describe('Automation Exercise', () => {
       cy.get('.product-information p').should('be.visible').and('have.length', 4)
       cy.get('.product-information span span').should('be.visible')    
     });
+    it('Test Case 9: Search Product', () => {
+      cy.visit('https://automationexercise.com')
+      cy.contains(`Products`).click()
+  
+      cy.url().should('contain', 'products')
+      cy.get('.title').should('be.visible').and('contain', 'All Products')
+  
+      cy.get('input#search_product').type('Shirt')
+      cy.get('button#submit_search').click()
+  
+      cy.get('.title').should('be.visible').and('contain', 'Searched Products')
+  
+      cy.get('.single-products')
+        .should('be.visible')
+        .and('have.length.at.least', 1)
+  
+    });
+  
+    it('Test Case 10: Verify Subscription in home page', () => {
+      cy.visit('https://automationexercise.com')
+  
+      cy.get('input#susbscribe_email')
+        .scrollIntoView()
+        .type('tester-qa@mail.com')
+  
+      cy.get('button#subscribe').click()
+  
+      cy.contains('You have been successfully subscribed!').should('be.visible')
+  
+    });
 
     it('Test Case 15: Place Order: Register before Checkout', () => {
       const timestamp = new Date().getTime()
