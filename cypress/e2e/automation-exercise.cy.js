@@ -108,7 +108,7 @@ describe('Automation Exercise', () => {
       cy.get('.product-information span span').should('be.visible')    
     });
 
-    it.only('Test Case 15: Place Order: Register before Checkout', () => {
+    it('Test Case 15: Place Order: Register before Checkout', () => {
       const timestamp = new Date().getTime()
       const nome = "Iron Man"
 
