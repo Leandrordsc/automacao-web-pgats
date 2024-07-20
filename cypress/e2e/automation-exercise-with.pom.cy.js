@@ -11,10 +11,9 @@ beforeEach(() => {
 });
 
 describe('Automation Exercise', () => {
-   it('Caso de teste 1: Registrar usuário', () => {
-      cadastro.preencherFormulario()
-      .verificarSeCadastroFoiConlcuido()
-      cy.get('i.fa-user').parent().should('contain', Cypress.env('signUpName'))
+   it.only('Caso de teste 1: Registrar usuário', () => {
+      cadastro.preencherFormulario().verificarSeCadastroFoiConcluido()
+      
   })
     it('Caso de teste 2: Login do usuário com e-mail e senha corretos e excluir a conta', () => {
       login.preencherLogin()

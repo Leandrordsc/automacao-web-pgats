@@ -37,11 +37,17 @@ class Cadastro {
 
     iniciarCadastro(usuario){
     cy.contains('Signup').click()
-      cy.get('[data-qa="signup-name"]').type()
-      cy.get('[data-qa="signup-email"]').type('testeUser@email.com')
+      cy.get('[data-qa="signup-name"]').type('Teste QA')
+      cy.get('[data-qa="signup-email"]').type(usuario)
       cy.contains('button', 'Signup').click()
       return this
 }
+
+    verificarSeCadastroFoiConcluido(){
+        cy.get('i.fa-user').parent().should('contain', Cypress.env('signUpName'))
+        
+        return this
+    }
 
 }
 
