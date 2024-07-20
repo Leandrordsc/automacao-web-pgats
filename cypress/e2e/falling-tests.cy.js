@@ -1,6 +1,4 @@
 /// <reference types="cypress" />
-import { should } from 'chai';
-import faker from 'faker';
 
 describe('Cadastrar entradas e saídas com bugs', () => {
     const descricao = 'Mesada'
