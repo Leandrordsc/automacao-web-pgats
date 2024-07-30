@@ -1,0 +1,103 @@
+{
+    "auth": {
+        "username": "leandrorodrigues_FuIy6m",
+        "access_key": "Z4LAsfj3ZVgA3MMjL7pD"
+    },
+    "browsers": [
+        {
+            "browser": "chrome",
+            "os": "Windows 10",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "firefox",
+            "os": "Windows 10",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "edge",
+            "os": "Windows 10",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "chrome",
+            "os": "OS X Mojave",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "firefox",
+            "os": "OS X Mojave",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "edge",
+            "os": "OS X Mojave",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "chrome",
+            "os": "OS X Catalina",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "firefox",
+            "os": "OS X Catalina",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        },
+        {
+            "browser": "edge",
+            "os": "OS X Catalina",
+            "versions": [
+                "latest",
+                "latest-1"
+            ]
+        }
+    ],
+    "run_settings": {
+        "cypress_config_file": "./cypress.config.js",
+        "cypress_version": "13.latest",
+        "project_name": "Automacao-Web-PGATS",
+        "build_name": "build-name",
+        "exclude": [],
+        "parallels": 2,
+        "npm_dependencies": {
+            "chai": "^5.1.1",
+            "faker": "^5.5.3",
+            "jest": "^29.7.0",
+            "mocha": "^10.6.0"
+        },
+        "package_config_options": {},
+        "headless": true
+    },
+    "connection_settings": {
+        "local": false,
+        "local_identifier": null,
+        "local_mode": null,
+        "local_config_file": null
+    },
+    "disable_usage_reporting": false
+}

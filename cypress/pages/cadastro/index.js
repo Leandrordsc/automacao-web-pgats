@@ -35,9 +35,9 @@ class Cadastro {
     return this
     }
 
-    iniciarCadastro(usuario){
-    cy.contains('Signup').click()
-      cy.get('[data-qa="signup-name"]').type('Teste QA')
+    iniciarCadastro(nome,usuario){
+      cy.contains('Signup').click()
+      cy.get('[data-qa="signup-name"]').type(nome)
       cy.get('[data-qa="signup-email"]').type(usuario)
       cy.contains('button', 'Signup').click()
       return this
