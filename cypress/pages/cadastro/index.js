@@ -1,3 +1,4 @@
+import faker from 'faker';
 class Cadastro {
     preencherFormulario() {
         const signUpName = 'Tester QA';
@@ -6,7 +7,6 @@ class Cadastro {
         const password = '12345';
         const timestamp = new Date().getTime();
         email = `tester-${timestamp}@mail.com`;
-    cy.visit('/')
     cy.contains('Signup').click()
     cy.get('[data-qa="signup-name"]').type(signUpName)
     cy.get('[data-qa="signup-email"]').type(email)
@@ -47,6 +47,25 @@ class Cadastro {
         cy.get('i.fa-user').parent().should('contain', Cypress.env('signUpName'))
         
         return this
+    }
+    cadastrarCartao(){
+     cy.get('b').should('contain', 'Tester QA')
+      cy.contains("Add to cart").click()
+      cy.contains("View Cart").click()
+      cy.get('.btn-default.check_out').should('be.visible')
+      cy.get('.btn-default.check_out').click()
+      cy.get(':nth-child(2) > .heading').should('have.text', 'Address Details')
+      cy.get(':nth-child(4) > .heading').should('have.text', 'Review Your Order')
+      cy.get('.form-control').type('378 98562-8781')
+      cy.get('.btn-default.check_out').click()
+      cy.get('[data-qa="name-on-card"]').type(faker.name.findName())
+      cy.get('[data-qa="card-number"]').type(faker.finance.creditCardNumber())
+      cy.get('[data-qa="cvc"]').type(faker.finance.creditCardCVV())
+      cy.get('[data-qa="expiry-month"]').type(12)
+      cy.get('[data-qa="expiry-year"]').type(2035)
+      cy.get('[data-qa="pay-button"]').click()
+      cy.get('[data-qa="order-placed"]').should('be.visible')
+      return this
     }
 
 }

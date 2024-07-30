@@ -2,6 +2,7 @@
 import faker from 'faker'
 import cadastro  from '../pages/cadastro/index.js'
 import login from '../pages/login/index.js'
+import contato from '../pages/Contato/index.js';
 import { beforeEach } from 'mocha'
 
 
@@ -42,27 +43,15 @@ describe('Automation Exercise', () => {
     it('Caso de teste 5: Registrar usuário com e-mail existente', () => {
       cadastro.iniciarCadastro('Leandro', 'teste@teste.com')
       cy.contains('Email Address already exist!').should('be.visible')
-      
     })
 
-    it.only('Caso de teste 6: Formulário de contato', () => {
-      
-      const Assunto = faker.lorem.words(2)
-      const Mensagem = faker.lorem.paragraph()
+    it('Caso de teste 6: Formulário de contato', () => {
       cy.url().should('eq', 'https://automationexercise.com/')
-      cy.contains('Contact us').click()
-      cy.get('[data-qa="name"]').type('Leandro')
-      cy.get('[data-qa="email"]').type('testeUser@email.com')
-      cy.get('[data-qa="subject"]').type(Assunto)
-      cy.get('[data-qa="message"]').type(Mensagem)
-      cy.fixture('example.json').as('arquivo')
-      cy.get('input[name="upload_file"]').selectFile('@arquivo')
-      cy.get('[data-qa="submit-button"]').click()
+      contato.preencherDados()
       cy.get('.status').should('have.text','Success! Your details have been submitted successfully.')   
     })
 
     it('Caso de teste 8: verificar todos os produtos e a página de detalhes do produto', () => {
-     
       cy.contains('Products').click()
       cy.get('.single-products').should('be.visible').and('have.length.at.least', 1).first()
         .parent().contains('View Product')
@@ -72,8 +61,7 @@ describe('Automation Exercise', () => {
       cy.get('.product-information span span').should('be.visible')    
     })
 
-    it('Test Case 9: Search Product', () => {
-      
+    it('Caso de teste 9: Buscar Produtos', () => {
       cy.contains(`Products`).click()
       cy.url().should('contain', 'products')
       cy.get('.title').should('be.visible').and('contain', 'All Products')
@@ -85,7 +73,7 @@ describe('Automation Exercise', () => {
         .and('have.length.at.least', 1)
     })
   
-    it('Test Case 10: Verify Subscription in home page', () => {
+    it('Caso de Teste 10: Verificar Inscrição na Página Inicial', () => {
       cy.get('input#susbscribe_email')
         .scrollIntoView()
         .type('tester-qa@mail.com')
@@ -93,24 +81,9 @@ describe('Automation Exercise', () => {
       cy.contains('You have been successfully subscribed!').should('be.visible')
     })
 
-    it('Test Case 15: Place Order: Register before Checkout', () => {
+    it.only('Caso de Teste 15: Realizar Pedido: Registrar antes da Finalização da Compra', () => {
       cadastro.preencherFormulario()
-      cy.get('b').should('contain', 'Tester QA')
-      cy.contains("Add to cart").click()
-      cy.contains("View Cart").click()
-      cy.get('.btn-default.check_out').should('be.visible')
-      cy.get('.btn-default.check_out').click()
-      cy.get(':nth-child(2) > .heading').should('have.text', 'Address Details')
-      cy.get(':nth-child(4) > .heading').should('have.text', 'Review Your Order')
-      cy.get('.form-control').type('378 98562-8781')
-      cy.get('.btn-default.check_out').click()
-      cy.get('[data-qa="name-on-card"]').type(faker.name.findName())
-      cy.get('[data-qa="card-number"]').type(faker.finance.creditCardNumber())
-      cy.get('[data-qa="cvc"]').type(faker.finance.creditCardCVV())
-      cy.get('[data-qa="expiry-month"]').type(12)
-      cy.get('[data-qa="expiry-year"]').type(2035)
-      cy.get('[data-qa="pay-button"]').click()
-      cy.get('[data-qa="order-placed"]').should('be.visible')
+      .cadastrarCartao()
       cy.get('[href *="delete"]').click()
       cy.get('b').should('contain', 'Account Deleted!')
       cy.get('[data-qa="continue-button"]').click()
