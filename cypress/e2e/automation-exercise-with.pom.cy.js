@@ -81,7 +81,7 @@ describe('Automation Exercise', () => {
       cy.contains('You have been successfully subscribed!').should('be.visible')
     })
 
-    it.only('Caso de Teste 15: Realizar Pedido: Registrar antes da Finalização da Compra', () => {
+    it('Caso de Teste 15: Realizar Pedido: Registrar antes da Finalização da Compra', () => {
       cadastro.preencherFormulario()
       .cadastrarCartao()
       cy.get('[href *="delete"]').click()
