@@ -6,7 +6,7 @@ class Cadastro {
         const password = '12345';
         const timestamp = new Date().getTime();
         email = `tester-${timestamp}@mail.com`;
-    cy.visit('https://automationexercise.com')
+    cy.visit('/')
     cy.contains('Signup').click()
     cy.get('[data-qa="signup-name"]').type(signUpName)
     cy.get('[data-qa="signup-email"]').type(email)

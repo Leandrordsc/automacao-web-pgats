@@ -8,14 +8,14 @@ import { beforeEach } from 'mocha'
 //HOOKS - São ações que executam antes de todos ou de cada teste, ou depois
 beforeEach(() => {
   cy.visit('')   
-});
+})
 
 describe('Automation Exercise', () => {
    it('Caso de teste 1: Registrar usuário', () => {
       cadastro.preencherFormulario()
       .verificarSeCadastroFoiConcluido()
       
-  })
+   })
     it('Caso de teste 2: Login do usuário com e-mail e senha corretos e excluir a conta', () => {
       cy.contains(' Signup / Login').click()
       login.preencherLogin('testeUser@email.com', '1472589', { log: false })
@@ -26,7 +26,7 @@ describe('Automation Exercise', () => {
     it('Caso de teste 3: Login de usuário com e-mail e senha incorretos', () => {
       cy.contains(' Signup / Login').click()
       login.preencherLogin('teste@teste.com', '123456')
-      cy.get('p').contains('Your email or password is incorrect!').should('be.visible');
+      cy.get('p').contains('Your email or password is incorrect!').should('be.visible')
             
     })
 
@@ -45,10 +45,10 @@ describe('Automation Exercise', () => {
       
     })
 
-    it('Caso de teste 6: Formulário de contato', () => {
+    it.only('Caso de teste 6: Formulário de contato', () => {
+      
       const Assunto = faker.lorem.words(2)
       const Mensagem = faker.lorem.paragraph()
-     
       cy.url().should('eq', 'https://automationexercise.com/')
       cy.contains('Contact us').click()
       cy.get('[data-qa="name"]').type('Leandro')
@@ -86,7 +86,6 @@ describe('Automation Exercise', () => {
     })
   
     it('Test Case 10: Verify Subscription in home page', () => {
-      
       cy.get('input#susbscribe_email')
         .scrollIntoView()
         .type('tester-qa@mail.com')
@@ -105,7 +104,7 @@ describe('Automation Exercise', () => {
       cy.get(':nth-child(4) > .heading').should('have.text', 'Review Your Order')
       cy.get('.form-control').type('378 98562-8781')
       cy.get('.btn-default.check_out').click()
-      cy.get('[data-qa="name-on-card"]').type(faker.name.findName());
+      cy.get('[data-qa="name-on-card"]').type(faker.name.findName())
       cy.get('[data-qa="card-number"]').type(faker.finance.creditCardNumber())
       cy.get('[data-qa="cvc"]').type(faker.finance.creditCardCVV())
       cy.get('[data-qa="expiry-month"]').type(12)
