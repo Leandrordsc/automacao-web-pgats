@@ -16,7 +16,7 @@ describe('Automation Exercise', () => {
       cadastro.preencherFormulario()
       .verificarSeCadastroFoiConcluido()
       
-   })
+    })
     it('Caso de teste 2: Login do usuário com e-mail e senha corretos e excluir a conta', () => {
       cy.contains(' Signup / Login').click()
       login.preencherLogin('testeUser@email.com', '1472589', { log: false })
@@ -88,7 +88,7 @@ describe('Automation Exercise', () => {
       cy.get('b').should('contain', 'Account Deleted!')
       cy.get('[data-qa="continue-button"]').click()
   
-  })
-  })
+    })
+})
   
   
