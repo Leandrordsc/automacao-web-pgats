@@ -1,7 +1,7 @@
 import faker from 'faker';
 class Cadastro {
     preencherFormulario() {
-        const signUpName = 'Tester QA';
+        const signUpName = 'Leandro Teste';
         Cypress.env('signUpName', signUpName);
         let email;
         const password = '12345';
@@ -49,7 +49,7 @@ class Cadastro {
         return this
     }
     cadastrarCartao(){
-     cy.get('b').should('contain', 'Tester QA')
+     cy.get('b').should('contain', 'Leandro Teste')
       cy.contains("Add to cart").click()
       cy.contains("View Cart").click()
       cy.get('.btn-default.check_out').should('be.visible')
