@@ -25,7 +25,7 @@ jobs:
         run: yarn add cypress --dev
 
       - name: Teste E2E (end-to-end)
-        run: yarn run cypress run
+        run: yarn cypress run
 
       - name: Enviando relatório de testes
         uses: actions/upload-artifact@v4
