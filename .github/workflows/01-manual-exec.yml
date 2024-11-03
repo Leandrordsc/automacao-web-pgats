@@ -21,14 +21,14 @@ jobs:
       - name: Instalando dependências
         run: yarn install
 
-      - name: Instalando Playwright
-        run: yarn playwright install
+      - name: Instalação do Cypress
+        run: yarn add cypress --dev
 
       - name: Teste E2E (end-to-end)
-        run: yarn run e2e
+        run: yarn run cypress run
 
       - name: Enviando relatório de testes
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-de-testes
-          path: ./playwright-report
+          path: ./cypress/results
