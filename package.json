@@ -11,8 +11,8 @@
   "description": "Automação com Cypress",
   "main": "index.js",
   "scripts": {
-    "headless":"cypress run",
-    "cypress:open":"cypress open",
+    "headless": "cypress run",
+    "cypress:open": "cypress open",
     "test": "cypress run --reporter nyan"
   },
   "dependencies": {
