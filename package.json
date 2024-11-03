@@ -6,13 +6,13 @@
     "jest": "^29.7.0",
     "mocha": "^10.6.0"
   },
-  "name": "Automação_de Teste_Web",
+  "name": "automacao-de-teste-web",
   "version": "1.0.0",
   "description": "Automação com Cypress",
   "main": "index.js",
   "scripts": {
-    "Modo headless": "cypress run",
-    "cypress:open": "cypress open",
+    "headless":"cypress run",
+    "cypress:open":"cypress open",
     "test": "cypress run --reporter nyan"
   },
   "dependencies": {
