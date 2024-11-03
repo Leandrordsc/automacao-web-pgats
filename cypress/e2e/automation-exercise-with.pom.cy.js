@@ -2,7 +2,7 @@
 import faker from 'faker'
 import cadastro  from '../pages/cadastro/index.js'
 import login from '../pages/login/index.js'
-import contato from '../pages/Contato/index.js';
+import contato from '../pages/contato/index.js';
 import { beforeEach } from 'mocha'
 
 
